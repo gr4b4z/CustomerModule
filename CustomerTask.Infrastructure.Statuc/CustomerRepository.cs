@@ -12,6 +12,7 @@ namespace CustomerTask.Infrastructure.Static
         {
             new Customer()
             {
+                Name = "Adam",
                 Phone = "+48503665689",
                 Surname = "Kowalski",
                 Id = 1,
@@ -23,7 +24,7 @@ namespace CustomerTask.Infrastructure.Static
                     Street = "Kowalskiego 12"
                 }
             }, new Customer()
-            {
+            {Name = "Adam",
                 Phone = "+48545689",
                 Surname = "Romczyk",
                 Id = 2,
@@ -35,7 +36,7 @@ namespace CustomerTask.Infrastructure.Static
                     Street = "Krowowdrza 11"
                 }
             }, new Customer()
-            {
+            {Name = "Adam",
                 Phone = "+48503665666",
                 Surname = "Nowak",
                 Id = 3,

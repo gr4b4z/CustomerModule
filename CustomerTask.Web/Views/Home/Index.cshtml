@@ -16,7 +16,7 @@
             <tr> <th>Surname</th> <th>Phone</th> <th>Address</th><th></th> </tr>
             </thead>
             <tbody> <tr ng-repeat="c in customers">
-                <td >{{c.surname}}</td> <td>{{c.phone}}</td> <td>{{c.address.street}}<br/>{{c.address.postalCode}} {{c.address.city}}</td>
+                <td >{{c.name}} {{c.surname}}</td> <td>{{c.phone}}</td> <td>{{c.address.street}}<br/>{{c.address.postalCode}} {{c.address.city}}</td>
                 <td>
                     <a ng-click="edit(c)" title="Edit"><span class="glyphicon glyphicon-pencil" style="cursor: pointer"></span></a>
                     <a ng-click="remove(c)" title="Remove"><span class="glyphicon glyphicon-remove" style="color: red;cursor: pointer"></span></a>
@@ -27,30 +27,36 @@
     </div>
     <div class="col-sm-6">
         <form class="form-horizontal" name="fm" novalidate ng-if="item">
+            <div class="form-group" ng-class="{ 'has-error': fm.firstName.$touched && fm.firstName.$invalid }">
+                <label for="inputEmail3" class="col-sm-2 control-label">Name <span style="color:red">*</span></label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="item.name" name="firstName" required="" placeholder="Name">
+                </div>
+            </div>
             <div class="form-group" ng-class="{ 'has-error': fm.Surname.$touched && fm.Surname.$invalid }">
-                <label for="inputEmail3" class="col-sm-2 control-label">Surname <span style="color:red">*</span></label>
+                <label for="inputEmail3" class="col-sm-2 control-label">Surname <span style="color: red">*</span></label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" ng-model="item.surname" name="Surname" required="" placeholder="Surname">
                 </div>
             </div>
             <div class="form-group" ng-class="{ 'has-error': fm.Phonenumber.$touched && fm.Phonenumber.$invalid }">
-                <label for="inputPassword3" class="col-sm-2 control-label">Phone number <span style="color:red">*</span></label>
+                <label for="inputPassword3" class="col-sm-2 control-label">Phone number <span style="color: red">*</span></label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control"
                            pattern="^([0-9]{9})$"
                            ng-model="item.phone" name="Phonenumber" required placeholder="Phone number">
-                    <p ng-show="fm.Phonenumber.$error.pattern"  class="help-block">Ex. format: 123456789</p>
+                    <p ng-show="fm.Phonenumber.$error.pattern" class="help-block">Ex. format: 123456789</p>
                 </div>
             </div>
             <div class="form-group" ng-class="{ 'has-error':fm.City.$touched && fm.City.$invalid }">
-                <label for="inputPassword3" class="col-sm-2 control-label">City <span style="color:red">*</span></label>
+                <label for="inputPassword3" class="col-sm-2 control-label">City <span style="color: red">*</span></label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" ng-model="item.address.city" name="City"
-                            required placeholder="City">
+                           required placeholder="City">
                 </div>
             </div>
             <div class="form-group" ng-class="{ 'has-error':fm.PostalCode.$touched && fm.PostalCode.$invalid }">
-                <label for="inputPassword3" class="col-sm-2 control-label">Postal Code <span style="color:red">*</span></label>
+                <label for="inputPassword3" class="col-sm-2 control-label">Postal Code <span style="color: red">*</span></label>
                 <div class="col-sm-10">
                     <input type="text" pattern="[0-9]{2}-[0-9]{3}"
                            class="form-control" ng-model="item.address.postalCode" name="PostalCode" required placeholder="Postal Code">
@@ -58,7 +64,7 @@
                 </div>
             </div>
             <div class="form-group" ng-class="{ 'has-error': fm.street.$touched &&fm.street.$invalid }">
-                <label for="inputPassword3" class="col-sm-2 control-label">Street <span style="color:red">*</span></label>
+                <label for="inputPassword3" class="col-sm-2 control-label">Street <span style="color: red">*</span></label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="street" ng-model="item.address.street" required placeholder="Street">
                 </div>
